@@ -23,6 +23,8 @@ PD-SVAK is a **downstream of [GrapheneOS](https://grapheneos.org)**, fully rebra
 | [STRATEGY.md](docs/STRATEGY.md) | Decisions, rules and risks |
 | [IDEAS.md](docs/IDEAS.md) | Ranked differentiating ideas |
 | [ROADMAP.md](docs/ROADMAP.md) | Week-by-week plan to Dec 31, then a 6-month plan |
+| [PRODUCT-DECISIONS.md](docs/PRODUCT-DECISIONS.md) | How the OS behaves out of the box: apps, defaults, updates |
+| [BUILD-HOST.md](docs/BUILD-HOST.md) | Build server hardware and setup |
 | [DEVICE-TIERS.md](docs/DEVICE-TIERS.md) | Device security tiers: Gold / Silver / Bronze |
 | [SECURITY-FEATURES.md](docs/SECURITY-FEATURES.md) | Feature tiers (MVP / v1.1 / later) |
 | [GOVERNANCE.md](docs/GOVERNANCE.md) | Key custody, releases, funding, legal checklist |
