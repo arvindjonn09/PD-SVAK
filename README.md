@@ -23,6 +23,7 @@ PD-SVAK is a **downstream of [GrapheneOS](https://grapheneos.org)**, fully rebra
 | [STRATEGY.md](docs/STRATEGY.md) | Decisions, rules and risks |
 | [IDEAS.md](docs/IDEAS.md) | Ranked differentiating ideas |
 | [ROADMAP.md](docs/ROADMAP.md) | Week-by-week plan to Dec 31, then a 6-month plan |
+| [DEVICE-TIERS.md](docs/DEVICE-TIERS.md) | Device security tiers: Gold / Silver / Bronze |
 | [SECURITY-FEATURES.md](docs/SECURITY-FEATURES.md) | Feature tiers (MVP / v1.1 / later) |
 | [GOVERNANCE.md](docs/GOVERNANCE.md) | Key custody, releases, funding, legal checklist |
 | [AGENTS.md](docs/AGENTS.md) | Multi-agent research and engineering workflow |
@@ -41,9 +42,14 @@ installer/  WebUSB installer (planned)
 .github/    CI workflows and issue forms
 ```
 
-## Supported devices (planned for launch)
+## Supported devices
 
-Pixel 8, 8 Pro, 8a, 9, 9 Pro, 9 Pro XL, 9 Pro Fold and 9a. The Pixel 10 series follows in early 2027. See [devices/devices.json](devices/devices.json).
+The aim is to bring PD-SVAK to as many Android phones as possible, each one as secure as its hardware allows. Every device has a **security tier** (Gold / Silver / Bronze) that says exactly what it protects against. See [docs/DEVICE-TIERS.md](docs/DEVICE-TIERS.md).
+
+- **Developer Preview (Gold):** Pixel 8, 8 Pro, 8a, 9, 9 Pro, 9 Pro XL, 9 Pro Fold and 9a. The Pixel 10 series follows in early 2027.
+- **2027:** Fairphone 5 (Silver), then Galaxy S24 / S25 international models and A55 (Bronze), then more by demand.
+
+The full list is in [devices/devices.json](devices/devices.json).
 
 ## Credits
 

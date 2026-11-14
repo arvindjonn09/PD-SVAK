@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Point the system updater at the PD-SVAK update server.
+     Hard rule 5: our builds must never use GrapheneOS update servers.
+     VERIFY the resource name against packages/apps/Updater/res/values/config.xml;
+     build/check-overlays.sh fails the build if it doesn't exist. -->
+<resources>
+    <string name="url" translatable="false">https://updates.pdsvak.example/</string>
+</resources>

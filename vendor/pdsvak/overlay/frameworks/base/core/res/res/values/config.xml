@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PD-SVAK privacy defaults for the framework.
+     Each name below must exist in frameworks/base/core/res/res/values/config.xml;
+     build/check-overlays.sh fails the build if it doesn't. -->
+<resources>
+    <!-- Network time comes from our NTP proxy, never from Google. -->
+    <string-array name="config_ntpServers" translatable="false">
+        <item>ntp://time.pdsvak.example</item>
+    </string-array>
+</resources>

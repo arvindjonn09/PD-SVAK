@@ -29,4 +29,13 @@ openssl genrsa 4096 | openssl pkcs8 -topk8 -scrypt -out avb.pem
 ssh-keygen -t ed25519 -f id_ed25519 -C "$CN factory images $DEVICE"
 
 sha256sum avb_pkmd.bin | tee avb_pkmd.sha256
+
+# One project-wide key signs the installer's release metadata (build/make-release-metadata.py).
+if [[ ! -f "$PDS_KEYS/metadata.pem" ]]; then
+  echo ">> creating the release-metadata signing key (asks for a passphrase)"
+  openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -aes-256-cbc -out "$PDS_KEYS/metadata.pem"
+  python3 "$PDS_ROOT/build/make-release-metadata.py" pubjwk --key "$PDS_KEYS/metadata.pem" \
+    | tee "$PDS_KEYS/metadata.pub.jwk"
+  echo ">> put metadata.pub.jwk (public) into installer/web/release-key.js"
+fi
 echo "Done. Publish ONLY avb_pkmd.sha256 and the public keys. Encrypt this directory now."

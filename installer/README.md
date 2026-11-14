@@ -23,6 +23,23 @@ The installer is a static site that flashes PD-SVAK from Chrome or Edge using We
 8. **Verify after boot.** The yellow "SelfSigned" screen shows a key hash. Check it matches the published fingerprint.
 9. **Recover from re-enumeration.** Handle USB re-enumeration after each reboot, with automatic reconnect and clear retry prompts.
 
+## Code (`web/`)
+
+| File | What |
+|---|---|
+| `index.html`, `style.css` | The step-by-step page |
+| `app.js` | Step flow and the safety checks: launch-tier devices only, signed metadata + SHA-256 before any write, relock required |
+| `fastboot-adapter.js` | The only file that talks to the phone; wraps the fastboot.js fork |
+| `release-key.js` | Public key for release metadata, and the metadata URL |
+
+**Before it can flash anything:**
+1. Vendor the fastboot.js fork as `web/vendor/fastboot.mjs` and check the method names in `fastboot-adapter.js` against it.
+2. After the key ceremony, put the metadata-signing **public** key in `release-key.js`.
+3. At deploy time, copy `devices/devices.json` into the site root.
+4. Publish `<channel>/<codename>.json` + `.sig` with `codename, build, image_url, image_sha256, image_size, avb_key_url, avb_key_sha256`.
+
+Until steps 1 and 2 are done, the installer stops with a clear error instead of flashing.
+
 ## Non-goals
 
 - Never leave the bootloader unlocked.

@@ -1,18 +1,39 @@
 {
-  "_comment": "Support-end dates from grapheneos.org/faq (2026-11-14). tier: launch | next | no",
+  "_comment": "tier = release status: launch | next | planned | dev | no (dev = maintainer test device for bringing up a line; never published or offered by the installer). security = docs/DEVICE-TIERS.md: gold | silver | bronze | none. line = gold (GrapheneOS downstream, build/*.sh) or aosp (PD-SVAK AOSP line, 2027). Pixel support-end dates from grapheneos.org/faq (2026-11-14); others are the vendor's update promise. Non-Pixel codenames, dates and relock status are UNVERIFIED until tested on real hardware.",
   "devices": [
-    { "codename": "shiba",    "name": "Pixel 8",           "soc": "Tensor G3", "mte": true, "support_end": "2030-10", "tier": "launch" },
-    { "codename": "husky",    "name": "Pixel 8 Pro",       "soc": "Tensor G3", "mte": true, "support_end": "2030-10", "tier": "launch" },
-    { "codename": "akita",    "name": "Pixel 8a",          "soc": "Tensor G3", "mte": true, "support_end": "2031-05", "tier": "launch" },
-    { "codename": "tokay",    "name": "Pixel 9",           "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
-    { "codename": "caiman",   "name": "Pixel 9 Pro",       "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
-    { "codename": "komodo",   "name": "Pixel 9 Pro XL",    "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
-    { "codename": "comet",    "name": "Pixel 9 Pro Fold",  "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
-    { "codename": "tegu",     "name": "Pixel 9a",          "soc": "Tensor G4", "mte": true, "support_end": "2032-04", "tier": "launch" },
-    { "codename": "frankel",  "name": "Pixel 10",          "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
-    { "codename": "blazer",   "name": "Pixel 10 Pro",      "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
-    { "codename": "mustang",  "name": "Pixel 10 Pro XL",   "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
-    { "codename": "rango",    "name": "Pixel 10 Pro Fold", "soc": "Tensor G5", "mte": true, "support_end": "2032-10", "tier": "next" },
-    { "codename": "stallion", "name": "Pixel 10a",         "soc": "Tensor G4", "mte": true, "support_end": "2033-03", "tier": "next" }
+    { "codename": "shiba",    "name": "Pixel 8",                       "soc": "Tensor G3",          "mte": true,  "support_end": "2030-10", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "husky",    "name": "Pixel 8 Pro",                   "soc": "Tensor G3",          "mte": true,  "support_end": "2030-10", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "akita",    "name": "Pixel 8a",                      "soc": "Tensor G3",          "mte": true,  "support_end": "2031-05", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "tokay",    "name": "Pixel 9",                       "soc": "Tensor G4",          "mte": true,  "support_end": "2031-08", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "caiman",   "name": "Pixel 9 Pro",                   "soc": "Tensor G4",          "mte": true,  "support_end": "2031-08", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "komodo",   "name": "Pixel 9 Pro XL",                "soc": "Tensor G4",          "mte": true,  "support_end": "2031-08", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "comet",    "name": "Pixel 9 Pro Fold",              "soc": "Tensor G4",          "mte": true,  "support_end": "2031-08", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "tegu",     "name": "Pixel 9a",                      "soc": "Tensor G4",          "mte": true,  "support_end": "2032-04", "tier": "launch",  "security": "gold",   "line": "gold" },
+    { "codename": "frankel",  "name": "Pixel 10",                      "soc": "Tensor G5",          "mte": true,  "support_end": "2032-08", "tier": "next",    "security": "gold",   "line": "gold" },
+    { "codename": "blazer",   "name": "Pixel 10 Pro",                  "soc": "Tensor G5",          "mte": true,  "support_end": "2032-08", "tier": "next",    "security": "gold",   "line": "gold" },
+    { "codename": "mustang",  "name": "Pixel 10 Pro XL",               "soc": "Tensor G5",          "mte": true,  "support_end": "2032-08", "tier": "next",    "security": "gold",   "line": "gold" },
+    { "codename": "rango",    "name": "Pixel 10 Pro Fold",             "soc": "Tensor G5",          "mte": true,  "support_end": "2032-10", "tier": "next",    "security": "gold",   "line": "gold" },
+    { "codename": "stallion", "name": "Pixel 10a",                     "soc": "Tensor G4",          "mte": true,  "support_end": "2033-03", "tier": "next",    "security": "gold",   "line": "gold" },
+
+    { "codename": "FP5",      "name": "Fairphone 5",                   "soc": "Qualcomm QCM6490",   "mte": false, "support_end": "2031-12", "tier": "planned", "security": "silver", "line": "aosp",
+      "limits": "Relocks with a custom AVB key, but no MTE and a weaker secure element than Pixel: less protection against forensic extraction" },
+
+    { "codename": "e1s",      "name": "Galaxy S24 (Exynos, SM-S921B)",  "soc": "Exynos 2400",        "mte": false, "support_end": "2031-01", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Cannot relock with a custom AVB key: no protection against someone with the phone in hand. Unlocking trips Knox permanently (Samsung Pay, Secure Folder stop working)" },
+    { "codename": "e2s",      "name": "Galaxy S24+ (Exynos, SM-S926B)", "soc": "Exynos 2400",        "mte": false, "support_end": "2031-01", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Cannot relock with a custom AVB key: no protection against someone with the phone in hand. Unlocking trips Knox permanently (Samsung Pay, Secure Folder stop working)" },
+    { "codename": "e3q",      "name": "Galaxy S24 Ultra (SM-S928B)",    "soc": "Snapdragon 8 Gen 3", "mte": false, "support_end": "2031-01", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "International model only; US models (SM-S928U) cannot be unlocked. Cannot relock with a custom AVB key. Unlocking trips Knox permanently" },
+    { "codename": "pa1q",     "name": "Galaxy S25 (SM-S931B)",          "soc": "Snapdragon 8 Elite", "mte": false, "support_end": "2032-02", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Only where OEM unlocking is still offered (One UI 8 removed it in many regions). Cannot relock with a custom AVB key. Unlocking trips Knox permanently" },
+    { "codename": "pa2q",     "name": "Galaxy S25+ (SM-S936B)",         "soc": "Snapdragon 8 Elite", "mte": false, "support_end": "2032-02", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Only where OEM unlocking is still offered (One UI 8 removed it in many regions). Cannot relock with a custom AVB key. Unlocking trips Knox permanently" },
+    { "codename": "pa3q",     "name": "Galaxy S25 Ultra (SM-S938B)",    "soc": "Snapdragon 8 Elite", "mte": false, "support_end": "2032-02", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Only where OEM unlocking is still offered (One UI 8 removed it in many regions). Cannot relock with a custom AVB key. Unlocking trips Knox permanently" },
+    { "codename": "a55x",     "name": "Galaxy A55 (SM-A556B)",          "soc": "Exynos 1480",        "mte": false, "support_end": "2030-03", "tier": "planned", "security": "bronze", "line": "aosp",
+      "limits": "Cannot relock with a custom AVB key: no protection against someone with the phone in hand. Unlocking trips Knox permanently" },
+
+    { "codename": "x1s",      "name": "Galaxy S20 5G (Exynos, SM-G981B)", "soc": "Exynos 990",         "mte": false, "support_end": "2024-03", "tier": "dev",     "security": "bronze", "line": "aosp",
+      "limits": "Dev device only: Samsung security updates ended in 2024 (VERIFY month), so bootloader, modem and firmware bugs stay unpatched. Cannot relock with a custom AVB key. US Snapdragon models (SM-G981U/U1) cannot be unlocked" }
   ]
 }

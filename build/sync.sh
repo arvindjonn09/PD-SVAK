@@ -15,5 +15,9 @@ cp -f "$PDS_ROOT"/manifests/*.xml .repo/local_manifests/ 2>/dev/null || true
 
 repo sync -j"$(nproc)" --force-sync --no-clone-bundle --no-tags
 
+# Our product layer lives in this repo; mirror it into the tree (keeping downloaded prebuilts).
+pds_need rsync
+rsync -a --delete --exclude prebuilt/ "$PDS_ROOT/vendor/pdsvak/" "$PDS_SRC/vendor/pdsvak/"
+
 [[ "${1:-}" == "--no-patches" ]] && exit 0
 "$PDS_ROOT/build/apply-patches.sh"

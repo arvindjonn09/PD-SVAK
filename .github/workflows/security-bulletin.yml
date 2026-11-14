@@ -35,10 +35,13 @@ jobs:
           - [ ] Rebase onto the new GrapheneOS stable tag (\`rebase-assistant\`)
           - [ ] Build all launch devices
           - [ ] Boot + OTA test on lab devices
-          - [ ] \`privacy-auditor\` traffic check PASS
+          - [ ] \`build/check-overlays.sh\` passes on the new tag
+          - [ ] Traffic check PASS: \`privacy/check-capture.py\`, then the \`privacy-auditor\` agent
           - [ ] Offline signing (2 maintainers)
+          - [ ] Installer metadata signed: \`build/make-release-metadata.py sign\`
           - [ ] Publish Beta, then promote to Stable after 24h
-          - [ ] Publish kernel source + tags
+          - [ ] Publish kernel source + tags: \`build/publish-kernel-source.sh\`
+          - [ ] Silver/Bronze (AOSP line) devices released within 7 days
           - [ ] Release notes (\`docs-writer\`)
           EOF
           gh issue create -R "$REPO" --title "$TITLE" --label security --body-file body.md

@@ -19,22 +19,28 @@ Today is 2026-11-14. The target is a **public Developer Preview by 2026-12-31**,
 
 ## Months 1–6 (Jan–Jun 2027)
 
+The Developer Preview is **Gold devices only** (Pixel). Other phones come through the AOSP line in 2027; see [DEVICE-TIERS.md](DEVICE-TIERS.md).
+
 - **M1–2:**
   - Ship monthly patch releases on time.
   - Survive the Dec/Mar quarterly merges.
   - Add Pixel 10 / 10 Pro / 10a.
   - Migration tool alpha.
+  - **AOSP line:** build system, signing and OTA for non-Pixel devices. Port the PD-SVAK patch set. Recruit 1–2 device maintainers.
 - **M2–3:**
   - **Stable 1.0.**
   - External security audit, grant-funded (NLnet/NGI, OTF).
   - Compatibility dashboard live.
+  - **First Silver device:** Fairphone 5, relocked with our key.
+  - Tier shown in the installer, setup wizard and Settings → About phone.
 - **M3–4:**
   - Banking attestation outreach (target: 10 banks allowlisting).
   - Android Auto validated with sandboxed Play.
   - Migration tool GA.
+  - **First Bronze devices:** Galaxy S24 / S25 international models and A55.
 - **M4–5:**
-  - Decide on the Fairphone 6 tier.
-  - Approach OEMs and resellers about access to embargoed patches.
+  - Confirm Fairphone 6, Motorola and OnePlus models for Silver on real hardware.
+  - Approach OEMs and resellers about access to embargoed patches, and about relocking support (a path from Bronze to Silver).
 - **M6:**
   - Foundation or association formed, with at least 3 maintainers who can sign releases.
   - Funding mix: donations, grants and an enterprise pilot.

@@ -9,6 +9,7 @@ You audit PD-SVAK network behaviour.
 1. **Inputs:**
    - A traffic capture summary from the device lab: DNS queries and SNI/hosts with timestamps, covering first boot and 24 hours idle.
    - `privacy/allowed-hosts.txt`.
+   - Run `python3 privacy/check-capture.py <capture.tsv>` first. Its exit code is the mechanical verdict; your job is to attribute and explain what it flags.
 2. **Flag every destination that is not on the allowlist.** For each one, attribute the most likely source: which app or system component made the connection, and why.
 3. **Flag every Google host individually,** including NTP, SUPL, PSDS, connectivity check and attestation provisioning, whenever it appears in a default configuration.
 4. **Return a verdict:** PASS only if no destinations outside the allowlist were seen.

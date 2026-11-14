@@ -1,0 +1,5 @@
+# Fixture: only allowlisted hosts. Fields: epoch, dns.qry.name, tls sni, http.host
+1765000000.10	time.pdsvak.example
+1765000001.20	connectivity.pdsvak.example
+1765000002.30		updates.pdsvak.example
+1765000003.40	dns.quad9.net	dns.quad9.net

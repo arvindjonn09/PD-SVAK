@@ -1,0 +1,4 @@
+# Fixture: one Google host and one unknown host must make the check fail.
+1765000000.10	time.pdsvak.example
+1765000004.00	connectivitycheck.gstatic.com
+1765000005.00		telemetry.vendor.example

@@ -27,3 +27,19 @@ export PDS_KEYS="${PDS_KEYS:-$HOME/pdsvak/keys}"
 
 pds_die() { echo "error: $*" >&2; exit 1; }
 pds_need() { command -v "$1" >/dev/null 2>&1 || pds_die "missing tool: $1"; }
+
+# Die unless $1 is a launch/next device on the Gold (GrapheneOS) line in devices/devices.json.
+# Silver/Bronze devices are built by the separate AOSP line, not by these scripts.
+pds_require_gold_device() {
+  pds_need python3
+  python3 - "$1" "$PDS_ROOT/devices/devices.json" <<'PY' || exit 1
+import json, sys
+name, path = sys.argv[1], sys.argv[2]
+d = next((x for x in json.load(open(path))["devices"] if x["codename"] == name), None)
+if d is None:
+    sys.exit(f"error: unknown device {name} (not in devices/devices.json)")
+if d.get("line") != "gold" or d.get("tier") not in ("launch", "next"):
+    sys.exit(f"error: {name} is tier '{d.get('tier')}', security '{d.get('security')}', line '{d.get('line')}'. "
+             "These scripts build only Gold-line launch/next devices.")
+PY
+}

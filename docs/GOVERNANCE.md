@@ -36,11 +36,14 @@ Privacy OS projects tend to fail on people, money and keys rather than on code. 
 
 ## Legal checklist (get a lawyer's review)
 
-- [ ] Product name and trademark search. Keep "Android" out of the name; use "runs Android apps".
-- [ ] GPLv2 kernel source published per build.
-- [ ] Apache-2.0 LICENSE/NOTICE files preserved, and modified files marked.
-- [ ] Vendor firmware blobs are kept out of git. They are extracted at build time and shipped only inside device images.
-- [ ] No Google apps bundled.
-- [ ] Attribution to upstream projects. Follow GrapheneOS's rebrand requirement: don't use their name in ours.
-- [ ] Disclosure policy and `security@` contact.
-- [ ] Duress-wipe legal note for users.
+An item is ticked only after the lawyer's review. "Drafted" means the work exists and is waiting for that review.
+
+- [ ] Product name and trademark search. Keep "Android" out of the name; use "runs Android apps". *Not started: needs the final name.*
+- [ ] GPLv2 kernel source published per build. *Drafted: `build/publish-kernel-source.sh`, and a step in the monthly checklist.*
+- [ ] Apache-2.0 LICENSE/NOTICE files preserved, and modified files marked. *Drafted: rules in `NOTICE.md`; `build/new-patch.sh` marks each patch as modified from upstream.*
+- [ ] Vendor firmware blobs are kept out of git. They are extracted at build time and shipped only inside device images. *Drafted: `.gitignore` and adevtool at build time. Needs the lawyer's opinion on redistribution (ROADMAP week 1).*
+- [ ] No Google apps bundled. *Drafted: `vendor/pdsvak/pdsvak.mk` preinstalls Accrescent only.*
+- [ ] Attribution to upstream projects. Follow GrapheneOS's rebrand requirement: don't use their name in ours. *Drafted: `NOTICE.md`.*
+- [ ] Disclosure policy and `security@` contact. *Drafted: `SECURITY.md`. The email address needs the project domain.*
+- [ ] Duress-wipe legal note for users. *Drafted: `docs/DURESS-WIPE.md`.*
+- [ ] Device-tier claims (Gold / Silver / Bronze) don't overstate security in any jurisdiction. *Drafted: `docs/DEVICE-TIERS.md`.*

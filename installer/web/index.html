@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PD-SVAK Installer</title>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' https://updates.pdsvak.example; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>PD-SVAK installer</h1>
+    <p class="sub">Installs PD-SVAK on a supported Pixel from Chrome or Edge. It erases everything on the phone.</p>
+  </header>
+
+  <main>
+    <ol id="steps">
+      <li data-step="browser">
+        <h2>1. Check your browser</h2>
+        <p data-out="browser">Checking…</p>
+      </li>
+
+      <li data-step="preflight">
+        <h2>2. Prepare the phone</h2>
+        <ul>
+          <li>Back up anything you want to keep. <strong>Installing erases the phone.</strong></li>
+          <li>Settings → About phone → tap <em>Build number</em> 7 times to turn on Developer options.</li>
+          <li>Settings → System → Developer options → turn on <em>OEM unlocking</em>. If it is greyed out, your phone is carrier-locked (common on Verizon models) and cannot be installed.</li>
+          <li>Use a USB-C cable plugged directly into the computer, not a hub. If something fails, try another port or cable first.</li>
+          <li>Turn the phone off, then hold <em>Power + Volume down</em> to enter the bootloader.</li>
+        </ul>
+        <label><input type="checkbox" data-in="preflight-ok"> I have done all of this and understand the phone will be erased.</label>
+        <button data-act="connect" disabled>Connect phone</button>
+        <p data-out="connect"></p>
+      </li>
+
+      <li data-step="unlock">
+        <h2>3. Unlock the bootloader</h2>
+        <p>Your phone will ask you to confirm. Use the volume keys to pick <em>Unlock the bootloader</em>, then press Power.</p>
+        <button data-act="unlock" disabled>Unlock</button>
+        <p data-out="unlock"></p>
+      </li>
+
+      <li data-step="download">
+        <h2>4. Download and verify</h2>
+        <p>Downloads the signed image for your exact model and checks its signature and SHA-256 hash before anything is written.</p>
+        <button data-act="download" disabled>Download</button>
+        <progress data-out="download-progress" max="1" value="0" hidden></progress>
+        <p data-out="download"></p>
+      </li>
+
+      <li data-step="flash">
+        <h2>5. Install PD-SVAK</h2>
+        <p>Don't unplug the phone. It will restart several times; the installer reconnects by itself, and asks you to reconnect if it can't.</p>
+        <button data-act="flash" disabled>Install</button>
+        <progress data-out="flash-progress" max="1" value="0" hidden></progress>
+        <p data-out="flash"></p>
+      </li>
+
+      <li data-step="key">
+        <h2>6. Add the PD-SVAK verified-boot key</h2>
+        <button data-act="key" disabled>Add key</button>
+        <p data-out="key"></p>
+      </li>
+
+      <li data-step="lock">
+        <h2>7. Lock the bootloader</h2>
+        <p><strong>Required.</strong> An unlocked phone lets anyone with physical access replace the OS. Confirm on the phone with the volume keys and Power.</p>
+        <button data-act="lock" disabled>Lock</button>
+        <p data-out="lock"></p>
+      </li>
+
+      <li data-step="verify">
+        <h2>8. Check the boot screen</h2>
+        <p>Choose <em>Start</em> on the phone. A yellow screen appears saying the phone is loading a different operating system, with an ID. The first characters of that ID must match:</p>
+        <p class="hash" data-out="verify">(shown after the image is verified)</p>
+        <p>If it doesn't match, don't use the phone. Report it as described in our security policy.</p>
+      </li>
+    </ol>
+  </main>
+
+  <footer>
+    <p>PD-SVAK is not affiliated with Google. Android and Pixel are trademarks of Google LLC.</p>
+  </footer>
+</body>
+</html>

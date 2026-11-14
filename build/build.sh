@@ -8,7 +8,7 @@ set -euo pipefail
 source "$(dirname "$0")/config.sh"
 
 DEVICE="${1:?usage: build.sh <codename>}"
-grep -q "\"codename\": \"$DEVICE\"" "$PDS_ROOT/devices/devices.json" || pds_die "unknown device $DEVICE"
+pds_require_gold_device "$DEVICE"
 
 cd "$PDS_SRC"
 
@@ -22,7 +22,11 @@ if [[ ! -d "vendor/google_devices/$DEVICE" || "${PDS_REGEN_VENDOR:-0}" == 1 ]]; 
   vendor/adevtool/bin/run generate-all -d "$DEVICE"
 fi
 
-# 2. Build the OS.
+# 2. PD-SVAK layer: hash-checked prebuilts, and overlays that still match upstream names.
+"$PDS_ROOT/build/fetch-prebuilts.sh"
+"$PDS_ROOT/build/check-overlays.sh"
+
+# 3. Build the OS.
 set +u; source build/envsetup.sh; set -u
 lunch "${DEVICE}-${PDS_RELEASE}-${PDS_VARIANT}"
 m vendorbootimage vendorkernelbootimage target-files-package

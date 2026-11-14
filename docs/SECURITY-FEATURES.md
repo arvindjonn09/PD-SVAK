@@ -39,7 +39,7 @@ Most of these features are inherited from GrapheneOS. "Ours" marks work PD-SVAK 
 - Self-hosted AttestationServer with scheduled remote verification.
 - Optional microG build variant, with signature spoofing restricted to microG only.
 - Second bundled browser (Cromite or IronFox).
-- Non-Pixel tiers with documented weaker guarantees.
+- Non-Pixel Silver and Bronze tiers (2027), with documented weaker guarantees. See [DEVICE-TIERS.md](DEVICE-TIERS.md) for what each tier does and doesn't protect against.
 
 ## Forensics reality check (2025–2026)
 

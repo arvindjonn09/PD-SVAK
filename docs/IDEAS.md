@@ -55,7 +55,7 @@ These ideas come from the research units, mostly from user pain points with Grap
 
 ## Explicitly rejected ideas
 
-- **Supporting "200 devices"** — the security bar can't be kept across that many.
+- **Supporting "200 devices" at one security level.** The Gold bar can't be kept across that many phones. Instead, we support many devices through honest Silver/Bronze tiers ([DEVICE-TIERS.md](DEVICE-TIERS.md)), adding them only as maintainers allow.
 - **A Play Integrity spoof module** — it is fragile and undermines the security story.
 - **Maintaining our own Chromium fork at launch** — we use Vanadium as the WebView; a browser fork is optional later.
 - **Bundled cloud services** — they create the commercial coupling /e/OS is criticised for.

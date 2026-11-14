@@ -1,0 +1,15 @@
+// Prebuilt apps preinstalled by PD-SVAK. The APK files are downloaded by
+// build/fetch-prebuilts.sh (hash-pinned in prebuilts.lock) and never committed.
+
+android_app_import {
+    name: "Accrescent",
+    apk: "prebuilt/Accrescent.apk",
+    // Keep the developer's own signature, so the app updates itself from its own store.
+    presigned: true,
+    // Unprivileged on purpose: an app store needs no system permissions to install apps.
+    privileged: false,
+    product_specific: true,
+    dex_preopt: {
+        enabled: false,
+    },
+}

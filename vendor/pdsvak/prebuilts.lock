@@ -1,0 +1,7 @@
+# Prebuilt APKs: <file name in vendor/pdsvak/prebuilt/>  <https URL>  <sha256>
+# build/fetch-prebuilts.sh refuses to build if a download doesn't match its hash.
+# To update: download the new release, check its signing certificate matches the upstream
+# developer's published one, then change the URL and hash here in one reviewed PR.
+#
+# Accrescent: https://accrescent.app  (VERIFY the release URL and asset name upstream)
+Accrescent.apk  https://github.com/accrescent/accrescent/releases/download/REPLACE_VERSION/accrescent.apk  REPLACE_WITH_SHA256

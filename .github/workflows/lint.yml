@@ -13,3 +13,9 @@ jobs:
         run: shellcheck -x -e SC1091 build/*.sh
       - name: Validate devices.json
         run: python3 -m json.tool devices/devices.json > /dev/null
+      - name: Self-test traffic checker
+        run: |
+          python3 privacy/check-capture.py privacy/testdata/pass.tsv
+          if python3 privacy/check-capture.py privacy/testdata/fail.tsv; then
+            echo "fail.tsv should have failed" >&2; exit 1
+          fi

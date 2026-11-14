@@ -1,0 +1,5 @@
+# Shows the "Sponsor" button on the repository. Uncomment a line once that account exists.
+# Donations go to the project (Open Collective) rather than to one person, see docs/GOVERNANCE.md.
+# open_collective: pdsvak
+# github: [<maintainer-login>]
+# custom: ["https://pdsvak.example/donate"]
