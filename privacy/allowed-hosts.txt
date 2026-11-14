@@ -1,0 +1,9 @@
+# Hosts a default PD-SVAK install may contact (first boot and idle).
+# Every change needs a justification in the PR. Used by the privacy-auditor agent.
+# Placeholders below. Replace them with the real domains once the infrastructure exists.
+updates.pdsvak.example        # OTA metadata + payloads
+time.pdsvak.example           # NTP proxy
+connectivity.pdsvak.example   # captive portal / connectivity check
+supl.pdsvak.example           # SUPL proxy (A-GPS)
+psds.pdsvak.example           # GNSS almanac proxy
+dns.quad9.net                 # default DNS-over-TLS (user-changeable)

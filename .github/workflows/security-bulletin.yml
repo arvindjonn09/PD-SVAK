@@ -1,0 +1,44 @@
+name: Monthly security release tracker
+
+on:
+  schedule:
+    - cron: "0 9 2 * *"   # 2nd of each month (bulletins usually land on the 1st business days)
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open security-release checklist issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          MONTH=$(date -u +%Y-%m)
+          TITLE="Security release ${MONTH}"
+          if gh issue list -R "$REPO" --search "\"$TITLE\" in:title" --state all --json number -q '.[0].number' | grep -q .; then
+            echo "Issue already exists"; exit 0
+          fi
+          gh label create security -R "$REPO" --color B60205 2>/dev/null || true
+          cat > body.md <<EOF
+          Target: signed release within **72h** of the bulletin.
+
+          - Android bulletin: https://source.android.com/docs/security/bulletin
+          - Pixel bulletin: https://source.android.com/docs/security/bulletin/pixel
+          - GrapheneOS releases: https://grapheneos.org/releases
+
+          ## Checklist
+          - [ ] Run the \`asb-tracker\` agent and paste the CVE table here
+          - [ ] Rebase onto the new GrapheneOS stable tag (\`rebase-assistant\`)
+          - [ ] Build all launch devices
+          - [ ] Boot + OTA test on lab devices
+          - [ ] \`privacy-auditor\` traffic check PASS
+          - [ ] Offline signing (2 maintainers)
+          - [ ] Publish Beta, then promote to Stable after 24h
+          - [ ] Publish kernel source + tags
+          - [ ] Release notes (\`docs-writer\`)
+          EOF
+          gh issue create -R "$REPO" --title "$TITLE" --label security --body-file body.md

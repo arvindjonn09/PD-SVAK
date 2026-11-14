@@ -1,0 +1,18 @@
+{
+  "_comment": "Support-end dates from grapheneos.org/faq (2026-11-14). tier: launch | next | no",
+  "devices": [
+    { "codename": "shiba",    "name": "Pixel 8",           "soc": "Tensor G3", "mte": true, "support_end": "2030-10", "tier": "launch" },
+    { "codename": "husky",    "name": "Pixel 8 Pro",       "soc": "Tensor G3", "mte": true, "support_end": "2030-10", "tier": "launch" },
+    { "codename": "akita",    "name": "Pixel 8a",          "soc": "Tensor G3", "mte": true, "support_end": "2031-05", "tier": "launch" },
+    { "codename": "tokay",    "name": "Pixel 9",           "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
+    { "codename": "caiman",   "name": "Pixel 9 Pro",       "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
+    { "codename": "komodo",   "name": "Pixel 9 Pro XL",    "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
+    { "codename": "comet",    "name": "Pixel 9 Pro Fold",  "soc": "Tensor G4", "mte": true, "support_end": "2031-08", "tier": "launch" },
+    { "codename": "tegu",     "name": "Pixel 9a",          "soc": "Tensor G4", "mte": true, "support_end": "2032-04", "tier": "launch" },
+    { "codename": "frankel",  "name": "Pixel 10",          "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
+    { "codename": "blazer",   "name": "Pixel 10 Pro",      "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
+    { "codename": "mustang",  "name": "Pixel 10 Pro XL",   "soc": "Tensor G5", "mte": true, "support_end": "2032-08", "tier": "next" },
+    { "codename": "rango",    "name": "Pixel 10 Pro Fold", "soc": "Tensor G5", "mte": true, "support_end": "2032-10", "tier": "next" },
+    { "codename": "stallion", "name": "Pixel 10a",         "soc": "Tensor G4", "mte": true, "support_end": "2033-03", "tier": "next" }
+  ]
+}

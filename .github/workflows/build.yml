@@ -1,0 +1,28 @@
+name: Build (self-hosted)
+
+# Full OS builds need about 64 GB RAM and 300+ GB disk. GitHub-hosted runners are too small.
+# Register a self-hosted runner labelled "pdsvak-builder" on the build host.
+# This produces UNSIGNED target-files only. Signing happens offline.
+
+on:
+  workflow_dispatch:
+    inputs:
+      device:
+        description: "Device codename (e.g. shiba, tokay)"
+        required: true
+        default: shiba
+
+concurrency:
+  group: build-${{ inputs.device }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: [self-hosted, linux, x64, pdsvak-builder]
+    timeout-minutes: 480
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync
+        run: build/sync.sh
+      - name: Build
+        run: build/build.sh "${{ inputs.device }}"

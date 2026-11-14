@@ -1,0 +1,14 @@
+# Never commit keys, vendor blobs or build outputs
+keys/
+*.pem
+*.pk8
+*.x509.pem
+avb_pkmd.bin
+id_ed25519*
+vendor-blobs/
+out/
+releases/
+*.zip
+*.img
+.DS_Store
+node_modules/

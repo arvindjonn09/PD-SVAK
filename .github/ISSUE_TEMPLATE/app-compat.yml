@@ -1,0 +1,36 @@
+name: App compatibility report
+description: Report whether an app works on PD-SVAK (banking, payments, Android Auto, games…)
+labels: [compat]
+body:
+  - type: input
+    id: app
+    attributes:
+      label: App name and package
+      placeholder: "Example Bank (com.example.bank)"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version
+  - type: dropdown
+    id: status
+    attributes:
+      label: Does it work?
+      options: [Works, Works with sandboxed Google Play, Partially, Broken]
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Installed from
+      options: [Accrescent, F-Droid, Google Play (sandboxed), Aurora, Direct APK, Other]
+  - type: input
+    id: build
+    attributes:
+      label: PD-SVAK build and device
+      placeholder: "2026122900, Pixel 8"
+  - type: textarea
+    id: details
+    attributes:
+      label: What happens? Any workaround?

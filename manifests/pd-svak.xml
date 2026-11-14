@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PD-SVAK local manifest. build/sync.sh copies it into .repo/local_manifests/.
+     Add our own repos here (branding, setup wizard, prebuilt app stores).
+     Example entries are commented out until those repos exist. -->
+<manifest>
+  <remote name="pdsvak" fetch="https://github.com/arvindjonn09/" />
+
+  <!-- <project path="vendor/pdsvak" name="pdsvak_vendor" remote="pdsvak" revision="main" /> -->
+  <!-- <project path="packages/apps/PdsSetupWizard" name="pdsvak_setupwizard" remote="pdsvak" revision="main" /> -->
+</manifest>
