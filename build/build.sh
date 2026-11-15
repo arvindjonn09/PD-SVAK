@@ -16,9 +16,11 @@ cd "$PDS_SRC"
 #    Vendor blobs are never committed to git. They exist only in the build tree and images.
 if [[ ! -d "vendor/google_devices/$DEVICE" || "${PDS_REGEN_VENDOR:-0}" == 1 ]]; then
   yarn install --cwd vendor/adevtool/
-  set +u; source build/envsetup.sh; set -u
+  # envsetup.sh, lunch and m reference unset variables, so keep -u off around them.
+  set +u; source build/envsetup.sh
   lunch "sdk_phone64_x86_64-${PDS_RELEASE}-${PDS_VARIANT}"
   m aapt2
+  set -u
   vendor/adevtool/bin/run generate-all -d "$DEVICE"
 fi
 
@@ -27,9 +29,10 @@ fi
 "$PDS_ROOT/build/check-overlays.sh"
 
 # 3. Build the OS.
-set +u; source build/envsetup.sh; set -u
+set +u; source build/envsetup.sh
 lunch "${DEVICE}-${PDS_RELEASE}-${PDS_VARIANT}"
 m vendorbootimage vendorkernelbootimage target-files-package
+set -u
 
 echo "Unsigned target-files are in: $PDS_SRC/out/target/product/$DEVICE/obj/PACKAGING/target_files_intermediates/"
 echo "Move them to the offline signing machine and run build/sign-release.sh"
