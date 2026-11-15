@@ -26,6 +26,12 @@ export BUILD_NUMBER="${BUILD_NUMBER:-}"
 export PDS_KEYS="${PDS_KEYS:-$HOME/pdsvak/keys}"
 
 pds_die() { echo "error: $*" >&2; exit 1; }
+
+# WSL: Windows drives under /mnt/<letter> are slow and case-insensitive, which breaks the tree.
+case "$PDS_SRC" in
+  /mnt/[a-zA-Z]|/mnt/[a-zA-Z]/*)
+    pds_die "PDS_SRC=$PDS_SRC is on a Windows drive. Use a path inside the Linux disk, e.g. ~/pdsvak/src (docs/BUILD-HOST.md)" ;;
+esac
 pds_need() { command -v "$1" >/dev/null 2>&1 || pds_die "missing tool: $1"; }
 
 # Die unless $1 is a launch/next device on the Gold (GrapheneOS) line in devices/devices.json.

@@ -6,6 +6,15 @@ source "$(dirname "$0")/config.sh"
 
 [[ "$(uname -m)" == "x86_64" ]] || pds_die "AOSP builds need an x86_64 Linux host"
 
+# WSL2: check the resources from docs/BUILD-HOST.md are in place.
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  mem_gb=$(( $(awk '/MemTotal/ {print $2}' /proc/meminfo) / 1024 / 1024 ))
+  swap_gb=$(( $(awk '/SwapTotal/ {print $2}' /proc/meminfo) / 1024 / 1024 ))
+  echo ">> WSL2 detected: ${mem_gb} GB RAM, ${swap_gb} GB swap, $(nproc) CPUs"
+  (( mem_gb >= 30 )) || pds_die "WSL has only ${mem_gb} GB RAM. Set memory= in %UserProfile%\\.wslconfig (docs/BUILD-HOST.md)"
+  (( swap_gb >= 16 )) || echo ">> warning: less than 16 GB swap; set swap= in .wslconfig"
+fi
+
 sudo apt-get update
 sudo apt-get install -y \
   git git-lfs repo curl unzip zip rsync python3 python3-protobuf \
