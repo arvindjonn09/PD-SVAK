@@ -9,7 +9,8 @@ export PDS_MANIFEST_BRANCH="${PDS_MANIFEST_BRANCH:-17}"
 export PDS_SRC="${PDS_SRC:-$HOME/pdsvak/src}"
 
 # Repo root of this project. Resolved from this file's location.
-export PDS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PDS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PDS_ROOT
 
 # Build variant. Release builds are always "user".
 export PDS_VARIANT="${PDS_VARIANT:-user}"
