@@ -16,7 +16,15 @@ fi
 mkdir -p .repo/local_manifests
 cp -f "$PDS_ROOT"/manifests/*.xml .repo/local_manifests/ 2>/dev/null || true
 
-repo sync -j"$(nproc)" --force-sync --no-clone-bundle --no-tags
+# Google's AOSP servers rate-limit (HTTP 429) too many parallel fetches. Lower PDS_SYNC_JOBS
+# if that happens; repo only re-fetches what's missing. Retries a few times before giving up.
+jobs="${PDS_SYNC_JOBS:-$(nproc)}"
+for attempt in 1 2 3; do
+  repo sync -j"$jobs" --force-sync --no-clone-bundle --no-tags && break
+  (( attempt < 3 )) || pds_die "repo sync failed 3 times. Try PDS_SYNC_JOBS=2"
+  echo ">> sync attempt $attempt failed; waiting 5 minutes before retrying (rate limits)"
+  sleep 300
+done
 
 # Our product layer lives in this repo; mirror it into the tree (keeping downloaded prebuilts).
 pds_need rsync

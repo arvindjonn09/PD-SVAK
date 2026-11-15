@@ -6,6 +6,7 @@ export PDS_MANIFEST_URL="${PDS_MANIFEST_URL:-https://github.com/GrapheneOS/platf
 export PDS_MANIFEST_BRANCH="${PDS_MANIFEST_BRANCH:-17}"
 
 # Optional: PDS_REPO_DEPTH=1 makes build/sync.sh skip git history (saves ~100 GB of disk).
+# Optional: PDS_SYNC_JOBS=4 lowers parallel fetches if Google's servers return HTTP 429.
 
 # Where the full source tree lives on the build host. Needs about 300+ GB free.
 export PDS_SRC="${PDS_SRC:-$HOME/pdsvak/src}"
