@@ -3,5 +3,7 @@
 # To update: download the new release, check its signing certificate matches the upstream
 # developer's published one, then change the URL and hash here in one reviewed PR.
 #
-# Accrescent: https://accrescent.app  (VERIFY the release URL and asset name upstream)
-Accrescent.apk  https://github.com/accrescent/accrescent/releases/download/REPLACE_VERSION/accrescent.apk  REPLACE_WITH_SHA256
+# Accrescent 0.29.1 (released 2026-11-04), https://github.com/accrescent/accrescent/releases
+# Size 7574636 bytes, matching the GitHub release asset. TODO on the build host: check the
+# signing certificate with `apksigner verify --print-certs` against Accrescent's published one.
+Accrescent.apk  https://github.com/accrescent/accrescent/releases/download/0.29.1/accrescent-0.29.1.apk  1c86c5af1e247eefbe6d5ee6d1114b1aa1d76f23c03ac00cc435e89c95cb947e
