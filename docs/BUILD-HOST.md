@@ -7,11 +7,15 @@ PD-SVAK builds **only on x86_64 Linux**. Windows can't build Android, and WSL2 i
 | Part | What we have | Is it enough? |
 |---|---|---|
 | CPU | Xeon E-2224, 4 cores / 4 threads | Works, but slow: first build about 12–16 h per phone, rebuilds about 3–4 h |
-| RAM | 32 GB | The minimum. Needs the swap and job settings below |
+| RAM | 32 GB, **the most this server supports** | The minimum for a build. Can't be upgraded, so the swap settings below are required |
 | SSD | 1 TB | Holds the source tree (about 300 GB) plus build output for 2–3 phones |
 | HDD | 1 TB | Only for archives: finished releases, kernel source tarballs, backups. **Never build on it** |
 
-It's good enough to start (ROADMAP weeks 1–4). It's tight for monthly releases: 8 launch Pixels × 3–4 h is about 30 h of our 72-hour window. Before the first monthly release, either upgrade the CPU, or add the i9 desktop (8c/16t, 64 GB) as a second builder running Linux.
+It's good enough to start (ROADMAP weeks 1–4). It's tight for monthly releases: 8 launch Pixels × 3–4 h is about 30 h of our 72-hour window. Its RAM is already at the maximum, so the way to speed up is a **second builder**, not upgrades:
+
+- **Plan:** before the first monthly release (January 2027), dual-boot the i9 desktop (8c/16t, 64 GB, NVMe) into Ubuntu 24.04 and split the Pixels between the two machines. Together they rebuild all 8 phones in about 12–15 h.
+- **Until then:** the ProLiant builds one phone at a time. Never run two builds at once on it, because 32 GB isn't enough for that.
+- **If memory still runs out** during the final linking steps, check `dmesg` for "Out of memory", make sure swap and zram are on (`swapon --show`), and close the desktop session (build over SSH).
 
 ## Setup
 
