@@ -7,7 +7,10 @@ pds_need repo
 
 cd "$PDS_SRC"
 if [[ ! -d .repo ]]; then
-  repo init -u "$PDS_MANIFEST_URL" -b "$PDS_MANIFEST_BRANCH" --git-lfs
+  # PDS_REPO_DEPTH=1 skips git history (saves ~100 GB). Fine for building; use a full
+  # sync on the release builder, where the rebase assistant needs history.
+  repo init -u "$PDS_MANIFEST_URL" -b "$PDS_MANIFEST_BRANCH" --git-lfs \
+    ${PDS_REPO_DEPTH:+--depth="$PDS_REPO_DEPTH"}
 fi
 
 mkdir -p .repo/local_manifests
