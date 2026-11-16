@@ -1,7 +1,8 @@
 # PD-SVAK product layer. Inherited by every Gold-line device product:
-#   $(call inherit-product-if-exists, vendor/pdsvak/pdsvak.mk)
+#   $(call inherit-product, vendor/pdsvak/pdsvak.mk)
 # That one include line is our only change to the device makefiles. It is carried as a patch
-# (see vendor/pdsvak/README.md). Everything else lives here, so monthly rebases stay small.
+# (patches/vendor/adevtool/, applied to its shared Pixel product-common.mk; see
+# vendor/pdsvak/README.md). Everything else lives here, so monthly rebases stay small.
 
 PDS_VENDOR := vendor/pdsvak
 

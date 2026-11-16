@@ -16,7 +16,7 @@ Each Gold device product needs one line. Add it, then turn it into a patch with 
 ```bash
 cd "$PDS_SRC/device/google/<family>"        # e.g. shusky (Pixel 8/8 Pro), caimito (Pixel 9 series)
 # add to the device's product makefile:
-#   $(call inherit-product-if-exists, vendor/pdsvak/pdsvak.mk)
+#   $(call inherit-product, vendor/pdsvak/pdsvak.mk)
 "$PDS_ROOT/build/new-patch.sh" device/google/<family> "Inherit the PD-SVAK product layer"
 ```
 

@@ -1,0 +1,25 @@
+From b7baa12a80841a25a7361d724ce742e460891515 Mon Sep 17 00:00:00 2001
+From: arvindjonn09 <arvindjonn09@gmail.com>
+Date: Mon, 16 Nov 2026 11:21:18 +1100
+Subject: [PATCH] Inherit the PD-SVAK product layer on all Pixels
+
+PD-SVAK patch. Modified from upstream; see NOTICE.md.
+---
+ config/mk/google_devices/common/product-common.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/config/mk/google_devices/common/product-common.mk b/config/mk/google_devices/common/product-common.mk
+index 72b4a219..514f084d 100644
+--- a/config/mk/google_devices/common/product-common.mk
++++ b/config/mk/google_devices/common/product-common.mk
+@@ -21,3 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
+ # TODO(b/136525499): move *_vendor.mk into the vendor makefile later
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
++
++# PD-SVAK product layer (branding, overlays, preinstalled apps). Hard inherit on purpose:
++# if vendor/pdsvak is missing the build fails instead of quietly shipping stock GrapheneOS.
++$(call inherit-product, vendor/pdsvak/pdsvak.mk)
+-- 
+2.43.0
+
