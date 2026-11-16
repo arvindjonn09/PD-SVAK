@@ -33,7 +33,7 @@
     { "codename": "a55x",     "name": "Galaxy A55 (SM-A556B)",          "soc": "Exynos 1480",        "mte": false, "support_end": "2030-03", "tier": "planned", "security": "bronze", "line": "aosp",
       "limits": "Cannot relock with a custom AVB key: no protection against someone with the phone in hand. Unlocking trips Knox permanently" },
 
-    { "codename": "x1s",      "name": "Galaxy S20 5G (Exynos, SM-G981B)", "soc": "Exynos 990",         "mte": false, "support_end": "2024-03", "tier": "dev",     "security": "bronze", "line": "aosp",
-      "limits": "Dev device only: Samsung security updates ended in 2024 (VERIFY month), so bootloader, modem and firmware bugs stay unpatched. Cannot relock with a custom AVB key. US Snapdragon models (SM-G981U/U1) cannot be unlocked" }
+    { "codename": "x1s",      "name": "Galaxy S20 5G (Exynos, SM-G981B)", "soc": "Exynos 990",         "mte": false, "support_end": "2025-03", "tier": "dev",     "security": "bronze", "line": "aosp",
+      "limits": "Dev device only: Samsung security updates ended with the 2025-03 patch (final firmware G981BXXSNHYB1, read from the device), so bootloader, modem and firmware bugs stay unpatched. Cannot relock with a custom AVB key. US Snapdragon models (SM-G981U/U1) cannot be unlocked" }
   ]
 }
