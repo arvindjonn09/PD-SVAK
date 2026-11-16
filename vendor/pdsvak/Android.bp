@@ -6,6 +6,9 @@ android_app_import {
     apk: "prebuilt/Accrescent.apk",
     // Keep the developer's own signature, so the app updates itself from its own store.
     presigned: true,
+    // Required for presigned APKs targeting SDK >= 30: install the file byte-for-byte, so the
+    // build system can't touch it and break the developer's v2+ signature.
+    preprocessed: true,
     // Unprivileged on purpose: an app store needs no system permissions to install apps.
     privileged: false,
     product_specific: true,
