@@ -38,6 +38,9 @@ fastboot flashing lock
 ```
 The phone should boot with a yellow notice that shows **our** key hash. Check that it matches the published `avb_pkmd.sha256`.
 
+## Emulator (fast testing, no phone)
+`build/emulator.sh build` then `build/emulator.sh run` builds the `pdsvak_emulator` product (stock `sdk_phone64_x86_64` plus `vendor/pdsvak/pdsvak.mk`) from the GrapheneOS tree and starts it. Use it to check overlays, branding and preinstalled apps in minutes. It is not a security target: there is no verified boot, hardware keystore or MTE. On WSL, add your user to the `kvm` group first.
+
 ## AOSP line (Silver/Bronze devices, e.g. the Galaxy S20 dev device)
 A separate LineageOS-based tree in `$PDS_AOSP_SRC` (default `~/pdsvak/aosp`), because these devices have no GrapheneOS support.
 ```bash
