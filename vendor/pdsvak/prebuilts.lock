@@ -4,6 +4,8 @@
 # developer's published one, then change the URL and hash here in one reviewed PR.
 #
 # Accrescent 0.29.1 (released 2026-11-04), https://github.com/accrescent/accrescent/releases
-# Size 7574636 bytes, matching the GitHub release asset. TODO on the build host: check the
-# signing certificate with `apksigner verify --print-certs` against Accrescent's published one.
+# Size 7574636 bytes, matching the GitHub release asset. Checked 2026-11-16 with
+# `apksigner verify --print-certs`: one v3 signer, CN=Logan Magee, certificate SHA-256
+# 067a40c4193aad51ac87f9ddfdebb15e24a1850babfa4821c28c5c25c3fdc071 (matches the
+# fingerprint in github.com/accrescent/accrescent README).
 Accrescent.apk  https://github.com/accrescent/accrescent/releases/download/0.29.1/accrescent-0.29.1.apk  1c86c5af1e247eefbe6d5ee6d1114b1aa1d76f23c03ac00cc435e89c95cb947e
