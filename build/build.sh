@@ -18,7 +18,12 @@ cd "$PDS_SRC"
 
 # 2. Generate vendor files from the Pixel factory images with adevtool.
 #    Vendor blobs are never committed to git. They exist only in the build tree and images.
-if [[ ! -d "vendor/google_devices/$DEVICE" || "${PDS_REGEN_VENDOR:-0}" == 1 ]]; then
+#    The generated module records the vendor/adevtool commit it was made with and refuses to
+#    build otherwise. Our adevtool patch gets a new commit hash on every sync, so regenerate
+#    whenever that recorded hash is stale (not only when the module is missing).
+vcheck="vendor/google_devices/$DEVICE/adevtool-version-check.mk"
+if [[ ! -f "$vcheck" || "${PDS_REGEN_VENDOR:-0}" == 1 ]] \
+   || ! grep -q "$(git -C vendor/adevtool rev-parse HEAD)" "$vcheck"; then
   yarn install --cwd vendor/adevtool/
   # envsetup.sh, lunch and m reference unset variables, so keep -u off around them.
   set +u; source build/envsetup.sh
