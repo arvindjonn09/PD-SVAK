@@ -16,10 +16,12 @@ ifneq ($(wildcard $(PDS_VENDOR)/bootanimation/bootanimation.zip),)
 PRODUCT_COPY_FILES += $(PDS_VENDOR)/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
 
-# --- Privacy defaults (static overlays on framework/system resources) ---------------------
-# Every resource name overlaid here is checked against the synced tree by
-# build/check-overlays.sh, which fails if upstream renamed or removed it.
-PRODUCT_PACKAGE_OVERLAYS += $(PDS_VENDOR)/overlay
+# --- Privacy defaults (runtime resource overlays, defined in Android.bp) -------------------
+# Resources live in overlay/<upstream path>/res. Every name is checked against the synced tree
+# by build/check-overlays.sh, which fails if upstream renamed or removed it.
+PRODUCT_PACKAGES += \
+    PdsvakFrameworkOverlay \
+    PdsvakUpdaterOverlay
 
 # --- Preinstalled apps -----------------------------------------------------------------------
 # APKs are not in git. build/fetch-prebuilts.sh downloads them and checks the pinned SHA-256

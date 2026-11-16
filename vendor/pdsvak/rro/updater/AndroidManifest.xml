@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PD-SVAK update server for the GrapheneOS Updater (resources in overlay/packages/apps/Updater). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pdsvak.overlay.updater">
+    <overlay android:targetPackage="app.seamlessupdate.client" android:isStatic="true" android:priority="100" />
+</manifest>

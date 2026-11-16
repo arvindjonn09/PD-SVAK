@@ -5,7 +5,8 @@ Our branding, privacy defaults and preinstalled apps, kept **outside** upstream 
 | Path | What |
 |---|---|
 | `pdsvak.mk` | Product config: branding properties, overlays, preinstalled packages |
-| `overlay/` | Static resource overlays (NTP server, updater URL) |
+| `overlay/` | Overlay resources (NTP server, updater URL), laid out by upstream path |
+| `rro/` | Manifests for the runtime resource overlays built from `overlay/` (see `Android.bp`) |
 | `Android.bp` + `prebuilts.lock` | Accrescent, preinstalled unprivileged, hash-pinned |
 | `bootanimation/` | Put `bootanimation.zip` here when the design is ready (it is optional; the build skips it if missing) |
 

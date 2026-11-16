@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PD-SVAK privacy defaults for framework-res (resources in overlay/frameworks/base/core/res). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pdsvak.overlay.framework">
+    <!-- Priority above the adevtool-generated Pixel overlays (0-10), so ours win. -->
+    <overlay android:targetPackage="android" android:isStatic="true" android:priority="100" />
+</manifest>

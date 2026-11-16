@@ -13,3 +13,23 @@ android_app_import {
         enabled: false,
     },
 }
+
+// Privacy-default overlays. Built as explicit runtime resource overlays rather than
+// PRODUCT_PACKAGE_OVERLAYS: the static-overlay route makes Soong auto-generate RROs named
+// framework-res__<device>__auto_generated_rro_product, which collide with the identically
+// named modules adevtool generates. Resource names are checked by build/check-overlays.sh.
+runtime_resource_overlay {
+    name: "PdsvakFrameworkOverlay",
+    manifest: "rro/framework/AndroidManifest.xml",
+    resource_dirs: ["overlay/frameworks/base/core/res/res"],
+    product_specific: true,
+    sdk_version: "current",
+}
+
+runtime_resource_overlay {
+    name: "PdsvakUpdaterOverlay",
+    manifest: "rro/updater/AndroidManifest.xml",
+    resource_dirs: ["overlay/packages/apps/Updater/res"],
+    product_specific: true,
+    sdk_version: "current",
+}
