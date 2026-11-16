@@ -3,8 +3,11 @@
      Each name below must exist in frameworks/base/core/res/res/values/config.xml;
      build/check-overlays.sh fails the build if it doesn't. -->
 <resources>
-    <!-- Network time comes from our NTP proxy, never from Google. -->
+    <!-- Network time never comes from Google. Interim (maintainer decision, 2026-11-17): use
+         GrapheneOS's server until our own NTP proxy (time.pdsvak.example) is running.
+         On the Gold line GrapheneOS itself reads time over HTTPS (config_httpsTimeUrls, also
+         time.grapheneos.org); this NTP value is what the LineageOS-based AOSP line uses. -->
     <string-array name="config_ntpServers" translatable="false">
-        <item>ntp://time.pdsvak.example</item>
+        <item>ntp://time.grapheneos.org</item>
     </string-array>
 </resources>

@@ -2,7 +2,8 @@
 # Every change needs a justification in the PR. Used by the privacy-auditor agent.
 # Placeholders below. Replace them with the real domains once the infrastructure exists.
 updates.pdsvak.example        # OTA metadata + payloads
-time.pdsvak.example           # NTP proxy
+time.pdsvak.example           # NTP proxy (planned)
+time.grapheneos.org           # interim network time (NTP + HTTPS), until our proxy runs
 connectivity.pdsvak.example   # captive portal / connectivity check
 supl.pdsvak.example           # SUPL proxy (A-GPS)
 psds.pdsvak.example           # GNSS almanac proxy
