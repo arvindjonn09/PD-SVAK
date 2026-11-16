@@ -18,6 +18,9 @@ PDS_SRC="$PDS_AOSP_SRC" "$PDS_ROOT/build/fetch-prebuilts.sh"
 
 cd "$PDS_AOSP_SRC"
 [[ -f vendor/extra/product.mk ]] || pds_die "run build/aosp-sync.sh first"
+# Refresh our layer from this repo every build, so edits here always reach the image.
+pds_need rsync
+rsync -a --delete --exclude prebuilt/ "$PDS_ROOT/vendor/pdsvak/" vendor/pdsvak/
 
 # envsetup.sh, breakfast and m reference unset variables, so keep -u off around them.
 set +u
