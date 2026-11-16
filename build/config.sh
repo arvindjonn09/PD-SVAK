@@ -30,8 +30,10 @@ export PDS_VARIANT="${PDS_VARIANT:-user}"
 export PDS_RELEASE="${PDS_RELEASE:-cur}"
 
 # Pin these for reproducible builds. Leave them empty for dev builds.
-export BUILD_DATETIME="${BUILD_DATETIME:-}"
-export BUILD_NUMBER="${BUILD_NUMBER:-}"
+# Exported only when set: an exported empty BUILD_NUMBER stops Soong from writing
+# out/soong/build_number.txt (LineageOS builds then fail; GrapheneOS's envsetup sets both).
+[[ -n "${BUILD_DATETIME:-}" ]] && export BUILD_DATETIME || unset BUILD_DATETIME
+[[ -n "${BUILD_NUMBER:-}" ]] && export BUILD_NUMBER || unset BUILD_NUMBER
 
 # Signing keys live OFFLINE. This path is used only on the air-gapped signing machine.
 export PDS_KEYS="${PDS_KEYS:-$HOME/pdsvak/keys}"
