@@ -38,6 +38,16 @@ fastboot flashing lock
 ```
 The phone should boot with a yellow notice that shows **our** key hash. Check that it matches the published `avb_pkmd.sha256`.
 
+## AOSP line (Silver/Bronze devices, e.g. the Galaxy S20 dev device)
+A separate LineageOS-based tree in `$PDS_AOSP_SRC` (default `~/pdsvak/aosp`), because these devices have no GrapheneOS support.
+```bash
+PDS_REPO_DEPTH=1 PDS_SYNC_JOBS=4 build/aosp-sync.sh   # LineageOS + manifests/aosp/*.xml + vendor/pdsvak
+build/aosp-build.sh x1s                               # userdebug, LineageOS test keys
+```
+- Our layer goes in through LineageOS's `vendor/extra/product.mk` hook, which inherits `vendor/pdsvak/aosp.mk`. No LineageOS patch is needed.
+- Device trees come from LineageOS and proprietary vendor files from TheMuppets. They stay in the build tree and are never committed or published.
+- These builds are for the maintainer's own test device only (tier `dev`). They can't relock, so they are never offered in the installer.
+
 ## Patch workflow
 - **Layout:** our changes live in `patches/<project path>/NNNN-*.patch`. Prefer overlays in `vendor/pdsvak/` when a resource will do. Otherwise edit the project in the tree and run `build/new-patch.sh <project path> "<description>"`.
 - **When a new GrapheneOS stable tag lands:** the `rebase-assistant` agent re-applies the patches with `build/apply-patches.sh` and opens draft PRs for any conflicts. A human reviews and merges them.

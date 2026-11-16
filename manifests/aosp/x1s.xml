@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AOSP line: Galaxy S20 5G (Exynos, SM-G981B, x1s). Dev device only, never published.
+  Copied into $PDS_AOSP_SRC/.repo/local_manifests/ by build/aosp-sync.sh.
+
+  Device trees and kernel: LineageOS (Apache-2.0 / GPL-2.0 kernel).
+  Proprietary vendor files: TheMuppets, community extraction of Samsung's stock firmware.
+  They are not ours to redistribute; they stay in the build tree and in local images only.
+  The list mirrors lineage.dependencies of device/samsung/x1s and universal9830-common.
+-->
+<manifest>
+  <remote name="pds-github" fetch="https://github.com/" revision="refs/heads/lineage-24.0" />
+
+  <project path="device/samsung/x1s" name="LineageOS/android_device_samsung_x1s" remote="pds-github" />
+  <project path="device/samsung/universal9830-common" name="LineageOS/android_device_samsung_universal9830-common" remote="pds-github" />
+  <project path="kernel/samsung/universal9830" name="LineageOS/android_kernel_samsung_universal9830" remote="pds-github" clone-depth="1" />
+
+  <project path="device/samsung_slsi/sepolicy" name="LineageOS/android_device_samsung_slsi_sepolicy" remote="pds-github" />
+  <project path="hardware/samsung" name="LineageOS/android_hardware_samsung" remote="pds-github" />
+  <project path="hardware/samsung_slsi/nfc" name="LineageOS/android_hardware_samsung_slsi_nfc" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/config" name="LineageOS/android_hardware_samsung_slsi-linaro_config" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/exynos" name="LineageOS/android_hardware_samsung_slsi-linaro_exynos" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/exynos5" name="LineageOS/android_hardware_samsung_slsi-linaro_exynos5" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/graphics" name="LineageOS/android_hardware_samsung_slsi-linaro_graphics" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/interfaces" name="LineageOS/android_hardware_samsung_slsi-linaro_interfaces" remote="pds-github" />
+  <project path="hardware/samsung_slsi-linaro/openmax" name="LineageOS/android_hardware_samsung_slsi-linaro_openmax" remote="pds-github" />
+
+  <project path="vendor/samsung/x1s" name="TheMuppets/proprietary_vendor_samsung_x1s" remote="pds-github" clone-depth="1" />
+  <project path="vendor/samsung/universal9830-common" name="TheMuppets/proprietary_vendor_samsung_universal9830-common" remote="pds-github" clone-depth="1" />
+</manifest>

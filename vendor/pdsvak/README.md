@@ -5,6 +5,7 @@ Our branding, privacy defaults and preinstalled apps, kept **outside** upstream 
 | Path | What |
 |---|---|
 | `pdsvak.mk` | Product config: branding properties, overlays, preinstalled packages |
+| `aosp.mk` | AOSP line (LineageOS-based): inherits `pdsvak.mk` and points LineageOS's updater at our server |
 | `overlay/` | Overlay resources (NTP server, updater URL), laid out by upstream path |
 | `rro/` | Manifests for the runtime resource overlays built from `overlay/` (see `Android.bp`) |
 | `Android.bp` + `prebuilts.lock` | Accrescent, preinstalled unprivileged, hash-pinned |
